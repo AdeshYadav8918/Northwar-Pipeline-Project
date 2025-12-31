@@ -27,7 +27,6 @@ flowchart LR
 A[GitHub Repository] --> B[AWS CodePipeline] 
 B --> C[AWS CodeBuild] 
 C --> D[EC2 Instance (Port 82)]
-
 A --> |master/develop branches| A 
 B --> |Orchestrates pipeline flow| B
 C --> |Builds website (creates Northwar.html)| C
@@ -37,7 +36,7 @@ D --> |Production deployment| D
 📁 Project Structure 
 
 ```mermaid
-flowchart LR
+flowchart TD
 A[Northwar CI/CD Pipeline Project/] --> B[index.html<br/># Source website file]
     A --> C[Dockerfile<br/># Ubuntu + Apache container]
     A --> D[docker-entrypoint.sh<br/># Container startup script]
