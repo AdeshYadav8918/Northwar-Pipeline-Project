@@ -23,7 +23,9 @@ A complete CI/CD pipeline that automatically builds and deploys a website to por
 🏗️ Architecture
 
 GitHub Repository → AWS CodePipeline → AWS CodeBuild → EC2 Instance (Port 82)
+       |                   |                   |               |
        ↓                   ↓                   ↓               ↓
+
   master/develop     Orchestrates       Builds website    Production
    branches          pipeline flow      (creates         deployment
                                         Northwar.html)
