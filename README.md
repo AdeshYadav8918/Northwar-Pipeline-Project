@@ -38,7 +38,7 @@ D -→ |Production deployment| D
 ``md
 ```mermaid
 flowchart LR
-A[website/] -→ B[index.html<br/># Source website file]
+A[Northwar CI/CD Pipeline Project/] -→ B[index.html<br/># Source website file]
     A -→ C[Dockerfile<br/># Ubuntu + Apache container]
     A -→ D[docker-entrypoint.sh<br/># Container startup script]
     A -→ E[apache-config.conf<br/># Apache config for port 82]
