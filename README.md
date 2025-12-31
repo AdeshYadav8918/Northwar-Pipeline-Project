@@ -22,24 +22,30 @@ A complete CI/CD pipeline that automatically builds and deploys a website to por
 
 🏗️ Architecture
 
-GitHub Repository → AWS CodePipeline → AWS CodeBuild → EC2 Instance (Port 82)
-       |                   |                   |               |
-       ↓                   ↓                   ↓               ↓
+```mermaid
+flowchart LR
+A[GitHub Repository] → B[AWS CodePipeline] 
+B -→ C[AWS CodeBuild] 
+C -→ D[EC2 Instance (Port 82)]
 
-  master/develop     Orchestrates       Builds website    Production
-   branches          pipeline flow      (creates         deployment
-                                        Northwar.html)
+A -→ |master/develop branches| A 
+B -→ |Orchestrates pipeline flow| B
+C -→ |Builds website (creates Northwar.html)| C
+D -→ |Production deployment| D          
 
-📁 Project Structure
+## 📁 **Project Structure Tree Diagram**
+``md
+```mermaid
+flowchart TD
 
-website/
-├── index.html                 # Source website file
-├── Dockerfile                 # Ubuntu + Apache container
-├── docker-entrypoint.sh       # Container startup script
-├── apache-config.conf         # Apache configuration for port 82
-├── buildspec.yml              # AWS CodeBuild configuration
-├── README.md                  # This file
-└── (other website assets)
+A[website/] --> B[index.html<br/># Source website file]
+    A --> C[Dockerfile<br/># Ubuntu + Apache container]
+    A --> D[docker-entrypoint.sh<br/># Container startup script]
+    A --> E[apache-config.conf<br/># Apache config for port 82]
+    A --> F[buildspec.yml<br/># AWS CodeBuild configuration]
+    A --> G[README.md<br/># This file]
+    A --> H[(other website assets)]
+
 🚀 Quick Start
 1. Fork and Clone the Repository
 bash
