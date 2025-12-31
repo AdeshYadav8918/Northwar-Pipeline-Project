@@ -1,8 +1,55 @@
 # Northwar CI/CD Pipeline Project
 
-📋 Project Overview
+🚀 Executive Summary
 
-A complete CI/CD pipeline that automatically builds and deploys a website to port 82 when changes are pushed to the master branch, while only building (no deployment) for the develop branch.
+    The Northwar CI/CD Pipeline is a comprehensive automated deployment system designed for product-based software companies requiring rapid, reliable, and branch-specific website delivery. This solution implements a sophisticated Git workflow integrated with AWS cloud services to automatically build and deploy a website to port 82 exclusively from the master branch, while maintaining isolated development builds from the develop branch without deployment.
+
+    Built as a production-ready infrastructure-as-code implementation, this pipeline exemplifies modern DevOps practices by combining containerized build environments, automated triggers, and conditional deployment logic to streamline the software delivery lifecycle while enforcing deployment governance through branch protection policies.
+
+🎯 Core Problem Statement & Solution Architecture
+
+Business Challenge
+
+    Product-based companies require:
+
+        * Rapid deployment cycles to maintain competitive advantage
+        * Zero-downtime updates for customer-facing applications
+        * Isolated development environments that don't affect production
+        * Auditable deployment processes with clear separation of duties
+        * Consistent build environments across development and production
+
+Technical Solution
+
+    This CI/CD pipeline addresses these requirements through:
+
+        * Dual-branch Git strategy with clear deployment rules
+        * Containerized build environment ensuring consistency
+        * Event-driven automation triggered by Git commits
+        * Conditional execution logic based on branch hierarchy
+        * Production deployment isolation on non-standard port (82)
+
+System Architecture Overview
+
+```mermaid
+flowchart TB
+
+subgraph GH[GitHub Repository]
+    D[develop<br/>branch] --> B1[build<br/>(only)]
+    B1 --> A1[Artifact Store<br/>(S3/ECR)]
+    D --> V1(( ))
+    M[master<br/>branch] --> B2[build +<br/>deploy]
+    B2 --> A2[Production<br/>EC2 Instance<br/>Port: 82]
+    M --> V2(( ))
+end
+
+%% Vertical alignment arrows
+V1 --> M
+A1 --> A2
+
+%% AWS services section
+V2 --> AWS1[AWS<br/>CodeBuild]
+V2 --> AWS2[AWS<br/>CodePipeline]
+```
 
 🎯 Project Requirements
 
@@ -14,7 +61,7 @@ A complete CI/CD pipeline that automatically builds and deploys a website to por
     ✅ Ubuntu + Apache container for building
     ✅ Website served from 'Northwar.html'
 
-🏗️ Architecture
+🏗️ Workflow Architecture
 
 ```mermaid
 flowchart LR
@@ -28,7 +75,7 @@ flowchart LR
     D --> D1[Production deployment]
 ```
 
-📁 Project Structure 
+📁 Repository Structure 
 
 ```mermaid
 flowchart TD
