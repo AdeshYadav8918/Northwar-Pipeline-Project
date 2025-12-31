@@ -135,7 +135,7 @@ EC2 Instance:
         files:
             - Northwar.html
 
-###🔧 Branch Behavior
+🔧 Branch Behavior
 
 |Branch | Trigger | Action | Result                                    |
 |-------|---------|--------|-------------------------------------------|
@@ -144,20 +144,24 @@ EC2 Instance:
 |Other | Push commit | Build only | Artifacts created, no deployment   |
 
 🧪 Testing the Pipeline
-Test Develop Branch:
-bash
-git checkout develop
-echo "<!-- Develop test -->" >> index.html
-git add . && git commit -m "Test develop" && git push origin develop
-# Result: Build runs, no deployment
-Test Master Branch:
-bash
-git checkout main
-git merge develop
-echo "<!-- Master test -->" >> index.html
-git add . && git commit -m "Test master" && git push origin main
-# Result: Build runs + deploys to EC2 port 82
+
+    Test Develop Branch:
+
+        git checkout develop
+        echo "<!-- Develop test -->" >> index.html
+        git add . && git commit -m "Test develop" && git push origin develop
+        # Result: Build runs, no deployment
+
+    Test Master Branch:
+
+        git checkout main
+        git merge develop
+        echo "<!-- Master test -->" >> index.html
+        git add . && git commit -m "Test master" && git push origin main
+        # Result: Build runs + deploys to EC2 port 82
+
 📊 Monitoring
+
 AWS Console Locations:
 CodePipeline: View pipeline execution status
 
