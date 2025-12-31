@@ -24,7 +24,7 @@ A complete CI/CD pipeline that automatically builds and deploys a website to por
 
 ```mermaid
 flowchart LR
-    A[GitHub Repository] --> B[AWS CodePipeline]
+    A[Northwar CI/CD Pipeline Project] --> B[AWS CodePipeline]
     B --> C[AWS CodeBuild]
     C --> D["EC2 Instance (Port 82)"]
 
