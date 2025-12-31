@@ -6,19 +6,13 @@ A complete CI/CD pipeline that automatically builds and deploys a website to por
 
 🎯 Project Requirements
 
-✅ Git workflow implementation (master/develop branches)
-
-✅ AWS CodeBuild triggers on commit to master or develop branches
-
-✅ Master branch: Build + Publish website on port 82
-
-✅ Develop branch: Build only (no publication)
-
-✅ Complete CI/CD pipeline implementation
-
-✅ Ubuntu + Apache container for building
-
-✅ Website served from 'Northwar.html'
+    ✅ Git workflow implementation (master/develop branches)
+    ✅ AWS CodeBuild triggers on commit to master or develop branches
+    ✅ Master branch: Build + Publish website on port 82
+    ✅ Develop branch: Build only (no publication)
+    ✅ Complete CI/CD pipeline implementation
+    ✅ Ubuntu + Apache container for building
+    ✅ Website served from 'Northwar.html'
 
 🏗️ Architecture
 
