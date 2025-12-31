@@ -62,17 +62,18 @@ buildspec.yml (CodeBuild configuration)
 docker-entrypoint.sh (Container entrypoint)
 
 3. AWS Infrastructure Setup
+
 IAM Roles:
 
-CodeBuildServiceRole with:
-AWSCodeBuildAdminAccess
-AmazonS3FullAccess
-AmazonEC2ContainerRegistryFullAccess
+    CodeBuildServiceRole with:
+    AWSCodeBuildAdminAccess
+    AmazonS3FullAccess
+    AmazonEC2ContainerRegistryFullAccess
 
 CodePipelineServiceRole with:
-AWSCodePipelineFullAccess
-AmazonS3FullAccess
-Trust relationship: codepipeline.amazonaws.com
+    AWSCodePipelineFullAccess
+    AmazonS3FullAccess
+    Trust relationship: codepipeline.amazonaws.com
 
 ECR Repository:
     Create and push Docker image
@@ -81,11 +82,12 @@ ECR Repository:
     docker push YOUR_ACCOUNT.dkr.ecr.REGION.amazonaws.com/ci-cd-build-image:latest
 
 EC2 Instance:
-Ubuntu 22.04, t2.micro
-Security group: Open ports 22, 80, 82
-Apache configured to serve on port 82
+    Ubuntu 22.04, t2.micro
+    Security group: Open ports 22, 80, 82
+    Apache configured to serve on port 82
 
 4. AWS Services Configuration
+
 CodeBuild Project:
     Name: Website-CI-Pipeline
     Source: GitHub (your repository)
@@ -100,32 +102,32 @@ CodePipeline:
     Artifact store: S3 bucket
 
 ⚙️ Configuration Files
-Dockerfile
-    FROM ubuntu:22.04
-    ENV DEBIAN_FRONTEND=noninteractive
-    RUN apt-get update && apt-get install -y apache2 git curl awscli
-    RUN echo "Listen 82" >> /etc/apache2/ports.conf
-    WORKDIR /build
-    CMD ["/bin/bash"]
+    Dockerfile
+        FROM ubuntu:22.04
+        ENV DEBIAN_FRONTEND=noninteractive
+        RUN apt-get update && apt-get install -y apache2 git curl awscli
+        RUN echo "Listen 82" >> /etc/apache2/ports.conf
+        WORKDIR /build
+        CMD ["/bin/bash"]
 
-buildspec.yml
-    version: 0.2
-    phases:
-    pre_build:
-        commands:
-        - cp index.html Northwar.html
-    post_build:
-        commands:
-        - |
-            if echo "$CODEBUILD_WEBHOOK_TRIGGER" | grep -q "master"; then
-            echo "DEPLOYING to port 82"
-            # Deployment commands here
-            else
-            echo "BUILD ONLY (No deploy)"
-            fi
-    artifacts:
-    files:
-        - Northwar.html
+    buildspec.yml
+        version: 0.2
+        phases:
+        pre_build:
+            commands:
+            - cp index.html Northwar.html
+        post_build:
+            commands:
+            - |
+                if echo "$CODEBUILD_WEBHOOK_TRIGGER" | grep -q "master"; then
+                echo "DEPLOYING to port 82"
+                # Deployment commands here
+                else
+                echo "BUILD ONLY (No deploy)"
+                fi
+        artifacts:
+        files:
+            - Northwar.html
 
 🔧 Branch Behavior
 Branch	Trigger	Action	Result
