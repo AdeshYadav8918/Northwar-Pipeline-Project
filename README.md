@@ -26,7 +26,7 @@ A complete CI/CD pipeline that automatically builds and deploys a website to por
 flowchart LR
     A[GitHub Repository] --> B[AWS CodePipeline]
     B --> C[AWS CodeBuild]
-    C --> D[EC2 Instance (Port 82)]
+    C --> D["EC2 Instance (Port 82)"]
 
 %% Notes:
 %% master/develop branches trigger pipeline
