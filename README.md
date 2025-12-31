@@ -2,8 +2,9 @@
 
 🚀 Executive Summary
 
-    The Northwar CI/CD Pipeline is a comprehensive automated deployment system designed for product-based software companies requiring rapid, reliable, and branch-specific website delivery. This solution implements a sophisticated Git workflow integrated with AWS cloud services to automatically build and deploy a website to port 82 exclusively from the master branch, while maintaining isolated development builds from the develop branch without deployment.
-    Built as a production-ready infrastructure-as-code implementation, this pipeline exemplifies modern DevOps practices by combining containerized build environments, automated triggers, and conditional deployment logic to streamline the software delivery lifecycle while enforcing deployment governance through branch protection policies.
+The Northwar CI/CD Pipeline is a comprehensive automated deployment system designed for product-based software companies requiring rapid, reliable, and branch-specific website delivery. This solution implements a sophisticated Git workflow integrated with AWS cloud services to automatically build and deploy a website to port 82 exclusively from the master branch, while maintaining isolated development builds from the develop branch without deployment.
+
+Built as a production-ready infrastructure-as-code implementation, this pipeline exemplifies modern DevOps practices by combining containerized build environments, automated triggers, and conditional deployment logic to streamline the software delivery lifecycle while enforcing deployment governance through branch protection policies.
 
 🎯 Core Problem Statement & Solution Architecture
 
