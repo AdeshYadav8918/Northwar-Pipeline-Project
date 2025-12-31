@@ -23,8 +23,8 @@ A complete CI/CD pipeline that automatically builds and deploys a website to por
 🏗️ Architecture
 
 ```mermaid
-flowchart LR
-A[GitHub Repository] → B[AWS CodePipeline] 
+```flowchart LR
+A[GitHub Repository] -→ B[AWS CodePipeline] 
 B -→ C[AWS CodeBuild] 
 C -→ D[EC2 Instance (Port 82)]
 
@@ -37,14 +37,13 @@ D -→ |Production deployment| D
 ``md
 ```mermaid
 flowchart TD
-
-A[website/] --> B[index.html<br/># Source website file]
-    A --> C[Dockerfile<br/># Ubuntu + Apache container]
-    A --> D[docker-entrypoint.sh<br/># Container startup script]
-    A --> E[apache-config.conf<br/># Apache config for port 82]
-    A --> F[buildspec.yml<br/># AWS CodeBuild configuration]
-    A --> G[README.md<br/># This file]
-    A --> H[(other website assets)]
+A[website/] -→ B[index.html<br/># Source website file]
+    A -→ C[Dockerfile<br/># Ubuntu + Apache container]
+    A -→ D[docker-entrypoint.sh<br/># Container startup script]
+    A -→ E[apache-config.conf<br/># Apache config for port 82]
+    A -→ F[buildspec.yml<br/># AWS CodeBuild configuration]
+    A -→ G[README.md<br/># This file]
+    A -→ H[(other website assets)]
 
 🚀 Quick Start
 1. Fork and Clone the Repository
