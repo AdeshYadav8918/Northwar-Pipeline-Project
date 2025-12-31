@@ -108,7 +108,7 @@ EC2 Instance:
 ⚙️ Configuration Files
 
     Dockerfile:
-    
+
         FROM ubuntu:22.04
         ENV DEBIAN_FRONTEND=noninteractive
         RUN apt-get update && apt-get install -y apache2 git curl awscli
@@ -135,11 +135,14 @@ EC2 Instance:
         files:
             - Northwar.html
 
-🔧 Branch Behavior
-Branch	Trigger	Action	Result
-master	Push commit	Build + Deploy	Website published on port 82
-develop	Push commit	Build only	Artifacts created, no deployment
-Other	Push commit	Build only	Artifacts created, no deployment
+###🔧 Branch Behavior
+
+|Branch | Trigger | Action | Result                                    |
+|-------|---------|--------|-------------------------------------------|
+|master	|Push commit | Build + Deploy | Website published on port 82   |
+|develop |	Push commit | Build only | Artifacts created, no deployment|
+|Other | Push commit | Build only | Artifacts created, no deployment   |
+
 🧪 Testing the Pipeline
 Test Develop Branch:
 bash
