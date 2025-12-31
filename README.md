@@ -52,21 +52,18 @@ A[Northwar CI/CD Pipeline Project/] --> B[index.html<br/># Source website file]
 1. Fork and Clone the Repository
 
     Fork https://github.com/hshar/website to your GitHub account
-
     git clone https://github.com/YOUR_USERNAME/website.git
-    
     cd website
-    
     git checkout -b develop
 
 2. Set Up Required Files
 
-Add these files to your repository:
+    Add these files to your repository:
 
-    Dockerfile (Ubuntu + Apache container)
-    apache-config.conf (Apache port 82 config)
-    buildspec.yml (CodeBuild configuration)
-    docker-entrypoint.sh (Container entrypoint)
+        Dockerfile (Ubuntu + Apache container)
+        apache-config.conf (Apache port 82 config)
+        buildspec.yml (CodeBuild configuration)
+        docker-entrypoint.sh (Container entrypoint)
 
 3. AWS Infrastructure Setup
 
