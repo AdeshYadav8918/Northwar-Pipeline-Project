@@ -24,28 +24,27 @@ A complete CI/CD pipeline that automatically builds and deploys a website to por
 
 ```mermaid
 flowchart LR
+A[GitHub Repository] --> B[AWS CodePipeline] 
+B --> C[AWS CodeBuild] 
+C --> D[EC2 Instance (Port 82)]
 
-A[GitHub Repository] -→ B[AWS CodePipeline] 
-B -→ C[AWS CodeBuild] 
-C -→ D[EC2 Instance (Port 82)]
-
-A -→ |master/develop branches| A 
-B -→ |Orchestrates pipeline flow| B
-C -→ |Builds website (creates Northwar.html)| C
-D -→ |Production deployment| D          
+A --> |master/develop branches| A 
+B --> |Orchestrates pipeline flow| B
+C --> |Builds website (creates Northwar.html)| C
+D --> |Production deployment| D          
 ```
 
 📁 Project Structure 
 
 ```mermaid
 flowchart LR
-A[Northwar CI/CD Pipeline Project/] -→ B[index.html<br/># Source website file]
-    A -→ C[Dockerfile<br/># Ubuntu + Apache container]
-    A -→ D[docker-entrypoint.sh<br/># Container startup script]
-    A -→ E[apache-config.conf<br/># Apache config for port 82]
-    A -→ F[buildspec.yml<br/># AWS CodeBuild configuration]
-    A -→ G[README.md<br/># This file]
-    A -→ H[(other website assets)]
+A[Northwar CI/CD Pipeline Project/] --> B[index.html<br/># Source website file]
+    A --> C[Dockerfile<br/># Ubuntu + Apache container]
+    A --> D[docker-entrypoint.sh<br/># Container startup script]
+    A --> E[apache-config.conf<br/># Apache config for port 82]
+    A --> F[buildspec.yml<br/># AWS CodeBuild configuration]
+    A --> G[README.md<br/># This file]
+    A --> H[(other website assets)]
 ```
 
 🚀 Quick Start
