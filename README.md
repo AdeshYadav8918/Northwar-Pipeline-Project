@@ -186,12 +186,14 @@ Verify Deployment:
 
 
 💰 Cost Optimization
+
     * Use t2.micro instances (free tier eligible)
     * Configure S3 lifecycle policies for artifacts
     * Use CloudWatch alarms for budget monitoring
     * Schedule non-production resources to stop overnight
 
 📝 Key Features
+
     * Automated Builds: Triggered on every commit
     * Branch-Specific Logic: Different behavior for master/develop
     * Containerized Builds: Consistent build environment
@@ -199,12 +201,14 @@ Verify Deployment:
     * Infrastructure as Code: All configurations in version control
 
 🔗 Useful Links
+
     * AWS CodeBuild Documentation
     * AWS CodePipeline Documentation
     * GitHub Repository
     * Source Website
 
 👥 Contributing
+
     1. Fork the repository
     2. Create a feature branch (git checkout -b feature/AmazingFeature)
     3. Commit changes (git commit -m 'Add AmazingFeature')
@@ -212,11 +216,13 @@ Verify Deployment:
     5. Open a Pull Request to develop branch
 
 📄 License
+
 This project is for educational purposes as part of a CI/CD pipeline implementation task.
 
 🆘 Support
 
 For issues with this implementation:
+    
     1. Check the troubleshooting section
     2. Verify AWS service configurations
     3. Review CloudWatch logs for error details
