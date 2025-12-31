@@ -76,12 +76,14 @@ IAM Roles:
         Trust relationship: codepipeline.amazonaws.com
 
 ECR Repository:
+
     Create and push Docker image
     aws ecr create-repository --repository-name ci-cd-build-image
     docker build -t ci-cd-build-image .
     docker push YOUR_ACCOUNT.dkr.ecr.REGION.amazonaws.com/ci-cd-build-image:latest
 
 EC2 Instance:
+
     Ubuntu 22.04, t2.micro
     Security group: Open ports 22, 80, 82
     Apache configured to serve on port 82
@@ -89,6 +91,7 @@ EC2 Instance:
 4. AWS Services Configuration
 
     CodeBuild Project:
+
         Name: Website-CI-Pipeline
         Source: GitHub (your repository)
         Environment: Custom ECR image ci-cd-build-image:latest
@@ -96,13 +99,16 @@ EC2 Instance:
         Privileged: ✅ Yes
 
     CodePipeline:
+
         Name: Website-CI-CD-Pipeline
         Source: GitHub (master branch)
         Build: AWS CodeBuild (Website-CI-Pipeline)
         Artifact store: S3 bucket
 
 ⚙️ Configuration Files
-    Dockerfile
+
+    Dockerfile:
+    
         FROM ubuntu:22.04
         ENV DEBIAN_FRONTEND=noninteractive
         RUN apt-get update && apt-get install -y apache2 git curl awscli
