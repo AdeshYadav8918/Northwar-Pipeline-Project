@@ -30,7 +30,7 @@ flowchart LR
 
     A -->|master/develop branches| A
     B -->|Orchestrates pipeline flow| B
-    C -->|Builds website (creates Northwar.html)| C
+    C -->|"Builds website (creates Northwar.html)"| C
     D -->|Production deployment| D
 ```
 
