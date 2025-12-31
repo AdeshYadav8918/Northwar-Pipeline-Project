@@ -24,13 +24,15 @@ A complete CI/CD pipeline that automatically builds and deploys a website to por
 
 ```mermaid
 flowchart LR
-A[GitHub Repository] --> B[AWS CodePipeline] 
-B --> C[AWS CodeBuild] 
-C --> D[EC2 Instance(Port 82)]
-A --> |master/develop branches| A 
-B --> |Orchestrates pipeline flow| B
-C --> |Builds website (creates Northwar.html)| C
-D --> |Production deployment| D          
+    A[GitHub Repository] --> B[AWS CodePipeline]
+    B --> C[AWS CodeBuild]
+    C --> D[EC2 Instance (Port 82)]
+
+%% Notes:
+%% master/develop branches trigger pipeline
+%% CodePipeline orchestrates flow
+%% CodeBuild creates Northwar.html
+%% EC2 serves production deployment
 ```
 
 📁 Project Structure 
