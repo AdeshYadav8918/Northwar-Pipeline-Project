@@ -145,95 +145,79 @@ EC2 Instance:
 
 🧪 Testing the Pipeline
 
-    Test Develop Branch:
+Test Develop Branch:
 
-        git checkout develop
-        echo "<!-- Develop test -->" >> index.html
-        git add . && git commit -m "Test develop" && git push origin develop
-        # Result: Build runs, no deployment
+    git checkout develop
+    echo "<!-- Develop test -->" >> index.html
+    git add . && git commit -m "Test develop" && git push origin develop
+    # Result: Build runs, no deployment
 
-    Test Master Branch:
+Test Master Branch:
 
-        git checkout main
-        git merge develop
-        echo "<!-- Master test -->" >> index.html
-        git add . && git commit -m "Test master" && git push origin main
-        # Result: Build runs + deploys to EC2 port 82
+    git checkout main
+    git merge develop
+    echo "<!-- Master test -->" >> index.html
+    git add . && git commit -m "Test master" && git push origin main
+    # Result: Build runs + deploys to EC2 port 82
 
 📊 Monitoring
 
 AWS Console Locations:
-CodePipeline: View pipeline execution status
-
-CodeBuild: Check build logs and artifacts
-
-CloudWatch: Detailed logs for troubleshooting
-
-EC2: Verify Apache service on port 82
-
-S3: Review build artifacts
+    1. CodePipeline: View pipeline execution status
+    2. CodeBuild: Check build logs and artifacts
+    3. CloudWatch: Detailed logs for troubleshooting
+    4. EC2: Verify Apache service on port 82
+    5. S3: Review build artifacts
 
 Verify Deployment:
-bash
-# Test website on port 82
-curl http://EC2_PUBLIC_IP:82/Northwar.html
+
+    # Test website on port 82
+    curl http://EC2_PUBLIC_IP:82/Northwar.html
+
 🚨 Troubleshooting
-Issue	Solution
-Pipeline not triggering	Check GitHub webhook in CodePipeline settings
-CodeBuild fails	Verify ECR permissions in IAM role
-EC2 not accessible	Check security group allows port 82
-Apache not on port 82	Verify /etc/apache2/ports.conf has Listen 82
-Branch detection fails	Check $CODEBUILD_WEBHOOK_TRIGGER in buildspec
+
+| Issue	| Solution |
+|-------|----------|
+|Pipeline not triggering | Check GitHub webhook in CodePipeline settings|
+|CodeBuild fails | Verify ECR permissions in IAM role|
+|EC2 not accessible | Check security group allows port 82|
+|Apache not on port 82 | Verify /etc/apache2/ports.conf has Listen 82|
+|Branch detection fails | Check $CODEBUILD_WEBHOOK_TRIGGER in buildspec|
+
+
 💰 Cost Optimization
-Use t2.micro instances (free tier eligible)
-
-Configure S3 lifecycle policies for artifacts
-
-Use CloudWatch alarms for budget monitoring
-
-Schedule non-production resources to stop overnight
+    * Use t2.micro instances (free tier eligible)
+    * Configure S3 lifecycle policies for artifacts
+    * Use CloudWatch alarms for budget monitoring
+    * Schedule non-production resources to stop overnight
 
 📝 Key Features
-Automated Builds: Triggered on every commit
-
-Branch-Specific Logic: Different behavior for master/develop
-
-Containerized Builds: Consistent build environment
-
-Port 82 Deployment: Unique port for production website
-
-Infrastructure as Code: All configurations in version control
+    * Automated Builds: Triggered on every commit
+    * Branch-Specific Logic: Different behavior for master/develop
+    * Containerized Builds: Consistent build environment
+    * Port 82 Deployment: Unique port for production website
+    * Infrastructure as Code: All configurations in version control
 
 🔗 Useful Links
-AWS CodeBuild Documentation
-
-AWS CodePipeline Documentation
-
-GitHub Repository
-
-Source Website
+    * AWS CodeBuild Documentation
+    * AWS CodePipeline Documentation
+    * GitHub Repository
+    * Source Website
 
 👥 Contributing
-Fork the repository
-
-Create a feature branch (git checkout -b feature/AmazingFeature)
-
-Commit changes (git commit -m 'Add AmazingFeature')
-
-Push to branch (git push origin feature/AmazingFeature)
-
-Open a Pull Request to develop branch
+    1. Fork the repository
+    2. Create a feature branch (git checkout -b feature/AmazingFeature)
+    3. Commit changes (git commit -m 'Add AmazingFeature')
+    4. Push to branch (git push origin feature/AmazingFeature)
+    5. Open a Pull Request to develop branch
 
 📄 License
 This project is for educational purposes as part of a CI/CD pipeline implementation task.
 
 🆘 Support
+
 For issues with this implementation:
-
-Check the troubleshooting section
-
-Verify AWS service configurations
-
-Review CloudWatch logs for error details
-
-Ensure all IAM permissions are correctly set
+    1. Check the troubleshooting section
+    2. Verify AWS service configurations
+    3. Review CloudWatch logs for error details
+    4. Ensure all IAM permissions are correctly set
