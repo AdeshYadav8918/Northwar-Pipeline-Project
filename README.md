@@ -21,6 +21,7 @@ A complete CI/CD pipeline that automatically builds and deploys a website to por
 ✅ Website served from 'Northwar.html'
 
 🏗️ Architecture
+
 ```mermaid
 flowchart LR
 
@@ -35,7 +36,7 @@ D -→ |Production deployment| D
 ```
 
 📁 Project Structure 
-``md
+
 ```mermaid
 flowchart LR
 A[Northwar CI/CD Pipeline Project/] -→ B[index.html<br/># Source website file]
