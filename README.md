@@ -1,10 +1,10 @@
 # Northwar CI/CD Pipeline Project
 
-<!-- 📋 Project Overview -->
+📋 Project Overview
 
 A complete CI/CD pipeline that automatically builds and deploys a website to port 82 when changes are pushed to the master branch, while only building (no deployment) for the develop branch.
 
-<!-- 🎯 Project Requirements -->
+🎯 Project Requirements
 
 ✅ Git workflow implementation (master/develop branches)
 
@@ -20,7 +20,7 @@ A complete CI/CD pipeline that automatically builds and deploys a website to por
 
 ✅ Website served from 'Northwar.html'
 
-<!-- 🏗️ Architecture -->
+🏗️ Architecture
 
 ```mermaid
 flowchart LR
@@ -49,102 +49,84 @@ A[Northwar CI/CD Pipeline Project/] --> B[index.html<br/># Source website file]
 
 🚀 Quick Start
 1. Fork and Clone the Repository
-
- Fork https://github.com/hshar/website to your GitHub account
+Fork https://github.com/hshar/website to your GitHub account
 git clone https://github.com/YOUR_USERNAME/website.git
 cd website
 git checkout -b develop
+
 2. Set Up Required Files
 Add these files to your repository:
-
 Dockerfile (Ubuntu + Apache container)
-
 apache-config.conf (Apache port 82 config)
-
 buildspec.yml (CodeBuild configuration)
-
 docker-entrypoint.sh (Container entrypoint)
 
 3. AWS Infrastructure Setup
 IAM Roles:
+
 CodeBuildServiceRole with:
-
 AWSCodeBuildAdminAccess
-
 AmazonS3FullAccess
-
 AmazonEC2ContainerRegistryFullAccess
 
 CodePipelineServiceRole with:
-
 AWSCodePipelineFullAccess
-
 AmazonS3FullAccess
-
 Trust relationship: codepipeline.amazonaws.com
 
 ECR Repository:
-bash
-# Create and push Docker image
-aws ecr create-repository --repository-name ci-cd-build-image
-docker build -t ci-cd-build-image .
-docker push YOUR_ACCOUNT.dkr.ecr.REGION.amazonaws.com/ci-cd-build-image:latest
+    Create and push Docker image
+    aws ecr create-repository --repository-name ci-cd-build-image
+    docker build -t ci-cd-build-image .
+    docker push YOUR_ACCOUNT.dkr.ecr.REGION.amazonaws.com/ci-cd-build-image:latest
+
 EC2 Instance:
 Ubuntu 22.04, t2.micro
-
 Security group: Open ports 22, 80, 82
-
 Apache configured to serve on port 82
 
 4. AWS Services Configuration
 CodeBuild Project:
-Name: Website-CI-Pipeline
-
-Source: GitHub (your repository)
-
-Environment: Custom ECR image ci-cd-build-image:latest
-
-Service role: CodeBuildServiceRole
-
-Privileged: ✅ Yes
+    Name: Website-CI-Pipeline
+    Source: GitHub (your repository)
+    Environment: Custom ECR image ci-cd-build-image:latest
+    Service role: CodeBuildServiceRole
+    Privileged: ✅ Yes
 
 CodePipeline:
-Name: Website-CI-CD-Pipeline
-
-Source: GitHub (master branch)
-
-Build: AWS CodeBuild (Website-CI-Pipeline)
-
-Artifact store: S3 bucket
+    Name: Website-CI-CD-Pipeline
+    Source: GitHub (master branch)
+    Build: AWS CodeBuild (Website-CI-Pipeline)
+    Artifact store: S3 bucket
 
 ⚙️ Configuration Files
 Dockerfile
-dockerfile
-FROM ubuntu:22.04
-ENV DEBIAN_FRONTEND=noninteractive
-RUN apt-get update && apt-get install -y apache2 git curl awscli
-RUN echo "Listen 82" >> /etc/apache2/ports.conf
-WORKDIR /build
-CMD ["/bin/bash"]
+    FROM ubuntu:22.04
+    ENV DEBIAN_FRONTEND=noninteractive
+    RUN apt-get update && apt-get install -y apache2 git curl awscli
+    RUN echo "Listen 82" >> /etc/apache2/ports.conf
+    WORKDIR /build
+    CMD ["/bin/bash"]
+
 buildspec.yml
-yaml
-version: 0.2
-phases:
-  pre_build:
-    commands:
-      - cp index.html Northwar.html
-  post_build:
-    commands:
-      - |
-        if echo "$CODEBUILD_WEBHOOK_TRIGGER" | grep -q "master"; then
-          echo "DEPLOYING to port 82"
-          # Deployment commands here
-        else
-          echo "BUILD ONLY (No deploy)"
-        fi
-artifacts:
-  files:
-    - Northwar.html
+    version: 0.2
+    phases:
+    pre_build:
+        commands:
+        - cp index.html Northwar.html
+    post_build:
+        commands:
+        - |
+            if echo "$CODEBUILD_WEBHOOK_TRIGGER" | grep -q "master"; then
+            echo "DEPLOYING to port 82"
+            # Deployment commands here
+            else
+            echo "BUILD ONLY (No deploy)"
+            fi
+    artifacts:
+    files:
+        - Northwar.html
+
 🔧 Branch Behavior
 Branch	Trigger	Action	Result
 master	Push commit	Build + Deploy	Website published on port 82
