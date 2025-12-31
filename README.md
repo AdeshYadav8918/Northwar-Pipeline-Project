@@ -28,10 +28,10 @@ flowchart LR
     B --> C[AWS CodeBuild]
     C --> D["EC2 Instance (Port 82)"]
 
-    A -->|master/develop branches|A
-    B -->|Orchestrates pipeline flow|B 
-    C -->|"Builds website (creates Northwar.html)"|C
-    D -->|Production deployment|D
+    A -->A1[master/develop branches]
+    B -->B1[Orchestrates pipeline flow] 
+    C -->C1["Builds website (creates Northwar.html)"]
+    D -->D1[Production deployment]
 ```
 
 📁 Project Structure 
