@@ -28,11 +28,10 @@ flowchart LR
     B --> C[AWS CodeBuild]
     C --> D["EC2 Instance (Port 82)"]
 
-%% Notes:
-%% master/develop branches trigger pipeline
-%% CodePipeline orchestrates flow
-%% CodeBuild creates Northwar.html
-%% EC2 serves production deployment
+    A -->|master/develop branches| A
+    B -->|Orchestrates pipeline flow| B
+    C -->|Builds website (creates Northwar.html)| C
+    D -->|Production deployment| D
 ```
 
 📁 Project Structure 
