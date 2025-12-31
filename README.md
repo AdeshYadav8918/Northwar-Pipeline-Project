@@ -97,7 +97,7 @@ A[Northwar CI/CD Pipeline Project/] --> B[index.html<br/># Source website file]
     * Fork https://github.com/hshar/website to your GitHub account
     * git clone https://github.com/YOUR_USERNAME/website.git
     * cd website
-    * git checkout -b develop -->
+    * git checkout -b develop 
 
 2. Set Up Required Files
 
