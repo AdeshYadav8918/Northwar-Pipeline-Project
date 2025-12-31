@@ -1,10 +1,10 @@
 # Northwar CI/CD Pipeline Project
 
-📋 Project Overview
+<!-- 📋 Project Overview -->
 
 A complete CI/CD pipeline that automatically builds and deploys a website to port 82 when changes are pushed to the master branch, while only building (no deployment) for the develop branch.
 
-🎯 Project Requirements
+<!-- 🎯 Project Requirements -->
 
 ✅ Git workflow implementation (master/develop branches)
 
@@ -20,7 +20,7 @@ A complete CI/CD pipeline that automatically builds and deploys a website to por
 
 ✅ Website served from 'Northwar.html'
 
-🏗️ Architecture
+<!-- 🏗️ Architecture -->
 
 ```mermaid
 flowchart LR
@@ -49,8 +49,8 @@ A[Northwar CI/CD Pipeline Project/] --> B[index.html<br/># Source website file]
 
 🚀 Quick Start
 1. Fork and Clone the Repository
-bash
-# Fork https://github.com/hshar/website to your GitHub account
+
+ Fork https://github.com/hshar/website to your GitHub account
 git clone https://github.com/YOUR_USERNAME/website.git
 cd website
 git checkout -b develop
