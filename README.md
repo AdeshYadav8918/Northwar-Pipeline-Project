@@ -21,9 +21,9 @@ A complete CI/CD pipeline that automatically builds and deploys a website to por
 ✅ Website served from 'Northwar.html'
 
 🏗️ Architecture
-
 ```mermaid
 ```flowchart LR
+
 A[GitHub Repository] -→ B[AWS CodePipeline] 
 B -→ C[AWS CodeBuild] 
 C -→ D[EC2 Instance (Port 82)]
@@ -33,10 +33,10 @@ B -→ |Orchestrates pipeline flow| B
 C -→ |Builds website (creates Northwar.html)| C
 D -→ |Production deployment| D          
 
-## 📁 **Project Structure Tree Diagram**
+📁 Project Structure 
 ``md
 ```mermaid
-flowchart TD
+```flowchart LR
 A[website/] -→ B[index.html<br/># Source website file]
     A -→ C[Dockerfile<br/># Ubuntu + Apache container]
     A -→ D[docker-entrypoint.sh<br/># Container startup script]
