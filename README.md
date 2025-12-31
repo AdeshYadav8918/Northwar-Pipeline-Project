@@ -66,14 +66,14 @@ docker-entrypoint.sh (Container entrypoint)
 IAM Roles:
 
     CodeBuildServiceRole with:
-    AWSCodeBuildAdminAccess
-    AmazonS3FullAccess
-    AmazonEC2ContainerRegistryFullAccess
+        AWSCodeBuildAdminAccess
+        AmazonS3FullAccess
+        AmazonEC2ContainerRegistryFullAccess
 
-CodePipelineServiceRole with:
-    AWSCodePipelineFullAccess
-    AmazonS3FullAccess
-    Trust relationship: codepipeline.amazonaws.com
+    CodePipelineServiceRole with:
+        AWSCodePipelineFullAccess
+        AmazonS3FullAccess
+        Trust relationship: codepipeline.amazonaws.com
 
 ECR Repository:
     Create and push Docker image
@@ -88,18 +88,18 @@ EC2 Instance:
 
 4. AWS Services Configuration
 
-CodeBuild Project:
-    Name: Website-CI-Pipeline
-    Source: GitHub (your repository)
-    Environment: Custom ECR image ci-cd-build-image:latest
-    Service role: CodeBuildServiceRole
-    Privileged: ✅ Yes
+    CodeBuild Project:
+        Name: Website-CI-Pipeline
+        Source: GitHub (your repository)
+        Environment: Custom ECR image ci-cd-build-image:latest
+        Service role: CodeBuildServiceRole
+        Privileged: ✅ Yes
 
-CodePipeline:
-    Name: Website-CI-CD-Pipeline
-    Source: GitHub (master branch)
-    Build: AWS CodeBuild (Website-CI-Pipeline)
-    Artifact store: S3 bucket
+    CodePipeline:
+        Name: Website-CI-CD-Pipeline
+        Source: GitHub (master branch)
+        Build: AWS CodeBuild (Website-CI-Pipeline)
+        Artifact store: S3 bucket
 
 ⚙️ Configuration Files
     Dockerfile
