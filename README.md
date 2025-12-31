@@ -1,8 +1,11 @@
 # Northwar CI/CD Pipeline Project
-📋 Project Overview
+
+##📋 Project Overview
+
 A complete CI/CD pipeline that automatically builds and deploys a website to port 82 when changes are pushed to the master branch, while only building (no deployment) for the develop branch.
 
 🎯 Project Requirements
+
 ✅ Git workflow implementation (master/develop branches)
 
 ✅ AWS CodeBuild triggers on commit to master or develop branches
