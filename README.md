@@ -1,6 +1,6 @@
 # Northwar CI/CD Pipeline Project
 
-##📋 Project Overview
+📋 Project Overview
 
 A complete CI/CD pipeline that automatically builds and deploys a website to port 82 when changes are pushed to the master branch, while only building (no deployment) for the develop branch.
 
@@ -21,14 +21,15 @@ A complete CI/CD pipeline that automatically builds and deploys a website to por
 ✅ Website served from 'Northwar.html'
 
 🏗️ Architecture
-text
+
 GitHub Repository → AWS CodePipeline → AWS CodeBuild → EC2 Instance (Port 82)
        ↓                   ↓                   ↓               ↓
   master/develop     Orchestrates       Builds website    Production
    branches          pipeline flow      (creates         deployment
                                         Northwar.html)
+
 📁 Project Structure
-text
+
 website/
 ├── index.html                 # Source website file
 ├── Dockerfile                 # Ubuntu + Apache container
